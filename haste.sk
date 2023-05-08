@@ -1,0 +1,41 @@
+options:
+    prefix: <##8d00fb>&lB<##9800f6>&lO<##a300f0>&lX<##af00eb>&lV<##ba00e5>&lE<##c500e0>&lN<##d000db>&lT<##db00d5>&lU<##e700d0>&lR<##f200ca>&lE<##fd00c5>&lS &7|&f
+    duration: 30 seconds
+
+every 10 minutes:
+    broadcast ""
+    broadcast "{@prefix} The next Haste Event is in 5 minutes!"
+    set {NextHasteEvent} to 5 minutes
+    HasteDuration()
+    wait 5 minutes
+    apply potion of haste of tier 2 to all players for {@duration}
+    broadcast "{@prefix} Haste is now active for %{NextHasteEvent}%!"
+
+command /haste [<text>]:
+    trigger:
+        if arg-1 = "Activate" or "On":
+            if player has permission "Haste.Admin":
+                
+                apply potion of haste of tier 2 to all players for {@duration}
+                send "{@prefix} Haste event has been activated!" to player
+                broadcast "{@prefix} %player% Has activated a haste event!"
+            
+            else:
+                HasteInfo(Player)
+        else:
+            HasteInfo(Player)
+
+
+function HasteInfo(p: player):
+    send "" to {_p}
+    send "&a&lHASTE INFO:" to {_p}
+    send " &7• Next haste event is in %{NextHasteEvent}%" to {_p}
+    send "" to {_p}
+    send " &7• If any problems are experienced, create a ticket in &3/discord&7 & send a screenshot!" to {_p}
+    send "" to {_p}
+
+function HasteDuration():
+    if {NextHasteEvent} <= 1 second:
+        remove 1 second from {NextHasteEvent}
+        wait 1 second
+        HasteDuration()
