@@ -1,0 +1,52 @@
+options:
+    prefix: &8[&c&lECONOMY &9* &c&lhttps://github.com/GamingwithNP/scripts/economy&8] &r
+
+command /balance <offlineplayer>:
+    aliases: /bal
+    trigger:
+        send "{@prefix} &6&l@%arg-1%&7 has a balance of &a$%{balance::%player's uuid%}% coins&8."
+
+command /pay <offlineplayer> <number>:
+    trigger:
+        if {balance::%player's uuid%} >= arg-2:
+            if arg-2 >= 100:
+                remove arg-2 from {balance::%player's uuid%}
+                add arg-2 to {balance::%arg-1's uuid%}
+                send "{@prefix} &7You successfully payed &6&l@%arg-1% &a$%arg-2% coins&8." to player
+                send "{@prefix} &6&l@%player%&7 payed you &a$%arg-2% coins&8." to arg-1
+            else:
+                send "{@prefix} &7You can not transfer less than &a$100 coins&8." to player
+
+command /economy <text> <player> [<number>]:
+    permission: Economy.*
+    permission message: &7Usage, /economy [ Balance | Pay | Set | Add | Remove ] [ Player ] [ Amount ]
+    aliases: /eco
+    trigger:
+        if arg-1 is "balance":
+            send "{@prefix} &6&l@%arg-2%&7 has a balance of &a$%{balance::%player's uuid%}% coins&8."
+        else if arg-1 is "pay":
+            if {balance::%player's uuid%} >= arg-3:
+                if arg-3 >= 100:
+                    remove arg-3 from {balance::%player's uuid%}
+                    add arg-3 to {balance::%arg-2's uuid%}
+                    send "{@prefix} &7You successfully payed &6&l@%arg-2% &a$%arg-3% coins&8." to player
+                    send "{@prefix} &6&l@%player%&7 payed you &a$%arg-3% coins&8." to arg-2
+                else:
+                    send "{@prefix} &7You can not transfer less than &a$100 coins&8." to player
+            else:
+                send "{@prefix} &7You need &a$%arg-3 - {balance::%player's uuid%}% more coins&8." to player
+        else if arg-1 is "set":
+            set {balance::%arg-2's uuid%} to arg-3
+            send "{@prefix} &6&l@%arg-2%&7's balance has been set to &a$%{balance::%player's uuid%}%." to player
+            send "{@prefix} &l&6@%player%&7 has added &a$%arg-3% coins &7to your balance." to arg-2
+        else if arg-1 is "add":
+            add arg-3 to {balance::%arg-2's uuid%}
+            send "{@prefix} &a$%arg-3% coins &7has been added to &6&l@%arg-2%&7's balance." to player
+            send "{@prefix} &6&l@%player%&7 has added &a$%arg-3% coins &7to your balance." to arg-2
+        else if arg-1 is "remove":
+            remove arg-3 from {balance::%arg-2's uuid%}
+            send "{@prefix} &a$%arg-3% coins &7has been removed from &6&l@%arg-2%&7's balance." to player
+            send "{@prefix} &6&l@%player%&7 removed &a$%arg-3% coins &7from your balance." to arg-2
+
+on tab complete of "/economy":
+	set tab completions for position 1 to "balance", "pay", "set", "add", and "remove"
