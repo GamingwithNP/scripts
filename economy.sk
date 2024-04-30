@@ -1,5 +1,5 @@
 options:
-    prefix: &8[&c&lECONOMY &9* &c&lhttps://github.com/GamingwithNP/scripts/economy&8] &r
+    prefix: &8[&c&lECONOMY &9* &c&lhttps://github.com/GamingwithNP/scripts/blob/main/economy.sk&8] &r
 
 command /balance <offlineplayer>:
     aliases: /bal
