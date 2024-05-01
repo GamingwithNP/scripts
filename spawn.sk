@@ -1,0 +1,20 @@
+options:
+    prefix: &8[&c&lhttps://github.com/GamingwithNP/scripts/blob/main/spawn.sk&8] &r
+
+on command "/setworldspawn":
+    cancel event
+    set {Spawn} to player's location
+    set the spawn point of world of player to {Spawn}
+    send "{@prefix} Spawn is now set&8!"
+
+command /spawn:
+    trigger:
+        teleport player to {Spawn}
+        send "You've been teleported to Spawn! %{Spawn}%"
+
+on join:
+    wait 1 tick
+    teleport player to {Spawn}
+
+on respawn:
+    teleport player to {Spawn}
