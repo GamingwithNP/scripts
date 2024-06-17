@@ -1,7 +1,5 @@
-# Scripts
+Here you will find scripts made by myself & possibly others.
 
-# Free scripts using skript provided by Gaming (Discord: GamingwithNP#0860)
+Free scripts using skript provided by Gaming (Discord: GamingwithNP#0860)
 
-# For all free scripts I made, I will post in **Gaming's Development**
-
-# https://discord.com/unJKF5MsWH
+Join my development server to chat with us, for support, to become a developer, & more! **Gaming's Development**! https://discord.com/unJKF5MsWH
