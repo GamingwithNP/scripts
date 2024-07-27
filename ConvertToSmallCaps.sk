@@ -1,0 +1,28 @@
+function ConvertToSmallCaps(text: text) :: text:
+    replace all "a" with "ᴀ" in {_text}
+    replace all "b" with "ʙ" in {_text}
+    replace all "c" with "ᴄ" in {_text}
+    replace all "d" with "ᴅ" in {_text}
+    replace all "e" with "ᴇ" in {_text}
+    replace all "f" with "ғ" in {_text}
+    replace all "g" with "ɢ" in {_text}
+    replace all "h" with "ʜ" in {_text}
+    replace all "i" with "ɪ" in {_text}
+    replace all "j" with "ᴊ" in {_text}
+    replace all "k" with "ᴋ" in {_text}
+    replace all "l" with "ʟ" in {_text}
+    replace all "m" with "ᴍ" in {_text}
+    replace all "n" with "ɴ" in {_text}
+    replace all "o" with "ᴏ" in {_text}
+    replace all "p" with "ᴘ" in {_text}
+    replace all "q" with "ǫ" in {_text}
+    replace all "r" with "ʀ" in {_text}
+    replace all "s" with "s" in {_text}
+    replace all "t" with "ᴛ" in {_text}
+    replace all "u" with "ᴜ" in {_text}
+    replace all "v" with "ᴠ" in {_text}
+    replace all "w" with "ᴡ" in {_text}
+    replace all "x" with "x" in {_text}
+    replace all "y" with "ʏ" in {_text}
+    replace all "z" with "ᴢ" in {_text}
+    return {_text}
